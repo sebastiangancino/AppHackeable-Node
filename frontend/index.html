@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="styles.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="page-container">
+        <div class="tabla">
+          <table id="userDataTable">
+            <thead>
+              <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Contraseña</th>
+              </tr>
+            </thead>
+  
+            <tbody id="userDataTableTBody">
+              
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="createUserContainer">
+          <form action="" id="createUserForm">
+            <div>
+              <label for="name">Nombre</label>
+              <input type="text" id="name" />
+            </div>
+  
+            <div>
+              <label for="surname">Apellido</label>
+              <input type="text" id="surname" />
+            </div>
+  
+            <div>
+              <label for="age">Edad</label>
+              <input type="text" id="age" />
+            </div>
+  
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+            <div class="buttom-container">
+              <button type="submit">Crear ususario</button>
+            </div>
+           </form>
+        </div>
+      </div>
+</body>
+</html>
+
+
+<script>
+
+const form = document.getElementById("createUserForm");//constante form del formulario
+form.addEventListener("submit", (event) => {
+  //cuando form tenga el evento submit ejecuta la función
+  event.preventDefault(); //quitamos el comportamiento por defecto que actualiza la página al dar click  al boton
+  const userData = eventToUserData(event);
+  const userDataJson = JSON.stringify(userData);
+  
+  fetch("http://localhost:3000/users", {
+    method: "POST", //tipo de método
+    headers: {
+      "Content-Type": "application/json", //le decimos que es un aplication JSON
+    },
+    body: userDataJson,
+  }).then((result)=> {
+    refreshTable();
+  });
+});
+
+function eventToUserData(event) {
+
+const elements = event.target.elements;  
+const name = event.target.elements.name.value;
+const surname = event.target.elements.surname.value;
+const age = elements.age.value;
+const password = elements.password.value;
+return {
+  name: name,
+  surname: surname,
+  age: age,
+  password: password,
+};
+}
+
+async function refreshTable(){
+ const users = await getUserFromApi();
+drawUserTable(users);
+
+}
+
+async function getUserFromApi(){
+  const response = await fetch("http://localhost:3000/users")
+  const users = await response.json();
+  return users;
+}
+
+
+async function drawUserTable(users){
+     document.getElementById("userDataTableTBody").innerHTML = "";
+    users.forEach((user)  => {
+     addUserToTable(user);
+  });
+
+}
+
+  function addUserToTable(user) {
+    //(method insert row ) consuluserDataTableTBodytar paraingresar filas
+  const userDataTable = document.getElementById("userDataTableTBody");
+
+// Create an empty <tr> element and add it to the 1st position of the table:
+const row = userDataTable.insertRow(-1);
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+const cell1 = row.insertCell(0);
+const cell2 = row.insertCell(1);
+const cell3 = row.insertCell(2);    
+const cell4 = row.insertCell(3);
+
+// Add some text to the new cells:
+cell1.innerHTML = user.name;
+cell2.innerHTML = user.surname;
+cell3.innerHTML = user.age;
+cell4.innerHTML = user.password; 
+  }
+  
+document.addEventListener("DOMContentLoaded", () => { //Method para mostrar datos al cargar la página
+  refreshTable(); 
+
+ }); 
+
+</script>

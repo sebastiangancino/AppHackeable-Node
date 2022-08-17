@@ -1,0 +1,23 @@
+.page-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+#createUserForm >*{
+text-align: right;
+margin-top: 10px;
+}
+
+tr>*{
+    padding: 10px;
+    border: 1px solid #ADEB42;
+    text-align: center;
+    color: wheat;
+    background: #03091E;
+}
+
+buttom-container {
+    text-align: center;
+}
