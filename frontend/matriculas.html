@@ -1,0 +1,117 @@
+
+
+      <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=+, initial-scale=1.0" />
+    <script src="main.js"></script>
+    <script
+      src="https://kit.fontawesome.com/3d7523478c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Estudiantes</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container-logo">
+        <a href="">
+        <img src="../assets/img/logouce.png" alt="" />
+    </a>
+             </div>
+            
+    
+      <nav class="container-nav">
+        <ul class="ul-container">
+          <li class="li-container">
+
+            <a href="estudiantes.html">Estudiantes</a>
+      
+                  <a href="profesores.html">Profesores</a>
+      
+                  <a href="materias.html">Materias</a>
+      
+                  <a href="matriculas.html">Matrículas</a>
+            
+          </li>
+        </ul>
+        
+      </nav>
+
+      
+
+      <div class="page-container">
+        <div class="createUserContainer">
+          <form action="" id="createUserForm">
+            <div>
+
+              <div class="avatar">
+                <img src="..//assets/img/programmer.png" alt="Avatar" class="avatar">
+              </div> 
+
+              <label for="name">Nombre</label>
+              <input type="text" id="name" />
+            </div>
+  
+            <div>
+              <label for="surname">Apellido</label>
+              <input type="text" id="surname" />
+            </div>
+  
+            <div>
+              <label for="age">Edad</label>
+              <input type="text" id="age" />
+            </div>
+  
+            <div>
+              <label for="password">Password</label>
+              <input type="password" id="password" />
+            </div>
+            <div class="buttom-container">
+              <button type="submit">Crear ususario</button>
+            </div>
+           </form>
+        </div>
+
+
+
+        
+
+        
+        <div class="tabla">
+          <table id="userDataTable">
+            <thead>
+              <tr>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Edad</th>
+                <th>Contraseña</th>
+              </tr>
+            </thead>
+  
+            <tbody id="userDataTableTBody">
+              
+            </tbody>
+          </table>
+        </div>
+    
+
+
+        
+        
+      </div>
+
+
+
+      
+    </div>
+
+
+    <script src="../api/ingresoDatos.js"></script>
+  </body>
+</html>
+    </div>
+  </body>
+</html>
