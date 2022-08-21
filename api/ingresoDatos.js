@@ -20,15 +20,28 @@ form.addEventListener("submit", (event) => {
 function eventToUserData(event) {
 
 const elements = event.target.elements;  
-const name = event.target.elements.name.value;
-const surname = event.target.elements.surname.value;
-const age = elements.age.value;
-const password = elements.password.value;
+const cod_estu = elements.cod_estu.value;
+const cod_nac = elements.cod_nac.value;
+const apellido_estu = elements.apellido_estu.value;
+const nombre_estu = elements.nombre_estu.value;
+const telefono_estu = elements.telefono_estu.value;
+const correo_estu =  elements.correo_estu.value;
+const fecha_nac_estu =  elements.fecha_nac_estu.value;
+const ident_estu =  elements.ident_estu.value;
+const direccion_estu =  elements.direccion_estu.value;
+
+
+
 return {
-  name: name,
-  surname: surname,
-  age: age,
-  password: password,
+  cod_estu: cod_estu,
+  cod_nac: cod_nac,
+  apellido_estu: apellido_estu,
+  nombre_estu: nombre_estu,
+  telefono_estu: telefono_estu,
+  correo_estu: correo_estu,
+  fecha_nac_estu: fecha_nac_estu,
+  ident_estu: ident_estu ,
+  direccion_estu: direccion_estu
 };
 }
 
@@ -65,12 +78,22 @@ const cell1 = row.insertCell(0);
 const cell2 = row.insertCell(1);
 const cell3 = row.insertCell(2);    
 const cell4 = row.insertCell(3);
+const cell5 = row.insertCell(4);
+const cell6 = row.insertCell(5);
+const cell7 = row.insertCell(6);    
+const cell8 = row.insertCell(7);
+const cell9 = row.insertCell(8);
 
 // Add some text to the new cells:
-cell1.innerHTML = user.name;
-cell2.innerHTML = user.surname;
-cell3.innerHTML = user.age;
-cell4.innerHTML = user.password; 
+cell1.innerHTML = user.cod_estu;
+cell2.innerHTML = user.cod_nac;
+cell3.innerHTML = user.apellido_estu;
+cell4.innerHTML = user.nombre_estu; 
+cell5.innerHTML = user.telefono_estu; 
+cell6.innerHTML = user.correo_estu; 
+cell7.innerHTML = user.fecha_nac_estu; 
+cell8.innerHTML = user.ident_estu;
+cell9.innerHTML = user.direccion_estu;  
   }
   
 document.addEventListener("DOMContentLoaded", () => { //Method para mostrar datos al cargar la página

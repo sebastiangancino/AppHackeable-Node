@@ -17,7 +17,18 @@ app.get("/", (req, res) => {
 
 app.post("/users", (req, res) => {
     const userData = req.body;
-    saveUserInDataBase(userData.name, userData.surname, userData.age, userData.password)
+    saveUserInDataBase( 
+      userData.cod_estu, 
+      userData.cod_nac,  
+      userData.apellido_estu, 
+      userData.nombre_estu,  
+      userData.telefono_estu,
+      userData.correo_estu,
+      userData.fecha_nac_estu,
+      userData.ident_estu,
+      userData.direccion_estu,
+
+      )
     res.send("Hello World!");
   });
 
@@ -31,13 +42,13 @@ app.listen(port, () => {
   console.log(`Example app listening at http:/localhost:${port}`);
 });
 
- async function saveUserInDataBase(name, surname, age , password) {
+ async function saveUserInDataBase(cod_estu, cod_nac, apellido_estu ,nombre_estu,  telefono_estu, correo_estu, fecha_nac_estu,ident_estu, direccion_estu) {
   //Guarda en la Base de datos
   const client = new Client({
-    user: 'kfzeoopprlylck',
-    host: 'ec2-44-205-64-253.compute-1.amazonaws.com',
-    database: 'dft9e1jbi2hcs6',
-    password: 'df26f4f913cfb820517884f6f753c9949a8955354a76580c7a6ee9d72b09c352',
+    user: 'yiqyaovtxyqnfj',
+    host: 'ec2-44-209-186-51.compute-1.amazonaws.com',
+    database: 'd7bfbe8kpjru51',
+    password: '5c295666fdeff0d1b148b9124337d28496d4d144e38b8726e1e51f17ebabbc83',
     port: 5432,
     ssl:{
       rejectUnauthorized:false,
@@ -46,16 +57,25 @@ app.listen(port, () => {
 
   await client.connect();
 
-
  const queryToInsert = 
- "INSERT INTO users values ('"+
- name +
+ "INSERT INTO estudiante values ('"+
+ cod_estu +
  "','" +
- surname+
+ cod_nac+
  "','" +
- age +
+ apellido_estu +
  "','" +
- password +
+ nombre_estu +
+ "','" +
+ telefono_estu+
+ "','" +
+ correo_estu +
+ "','" +
+ fecha_nac_estu +
+ "','" + 
+ ident_estu +
+ "','" +
+ direccion_estu+
  "')";
  
  console.log("Se está ejecutando", queryToInsert);
@@ -68,10 +88,10 @@ app.listen(port, () => {
 async function getUserInDataBase() {
   //Guarda en la Base de datos
   const client = new Client({
-    user: 'kfzeoopprlylck',
-    host: 'ec2-44-205-64-253.compute-1.amazonaws.com',
-    database: 'dft9e1jbi2hcs6',
-    password: 'df26f4f913cfb820517884f6f753c9949a8955354a76580c7a6ee9d72b09c352',
+    user: 'yiqyaovtxyqnfj',
+    host: 'ec2-44-209-186-51.compute-1.amazonaws.com',
+    database: 'd7bfbe8kpjru51',
+    password: '5c295666fdeff0d1b148b9124337d28496d4d144e38b8726e1e51f17ebabbc83',
     port: 5432,
     ssl:{
       rejectUnauthorized:false,
@@ -80,7 +100,7 @@ async function getUserInDataBase() {
 
   await client.connect();
  
- const res = await client.query("Select * from users");
+ const res = await client.query("Select * from estudiante");
   console.log(res.rows);
   await client.end();
   return res.rows;
