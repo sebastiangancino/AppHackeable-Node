@@ -1,6 +1,8 @@
 
 const form = document.getElementById("createUserForm");//constante form del formulario
 form.addEventListener("submit", (event) => {
+
+  
   //cuando form tenga el evento submit ejecuta la función
   event.preventDefault(); //quitamos el comportamiento por defecto que actualiza la página al dar click  al boton
   const userData = eventToUserData(event);
@@ -14,14 +16,30 @@ form.addEventListener("submit", (event) => {
     body: userDataJson,
   }).then((result)=> {
     refreshTable();
+   
+    
+    
   });
 });
 
+ 
 /* function captureSelect() {
   cod_nac= document.getElementById("cod_nac").value;
   console.log(cod_nac)
 }
  */
+ 
+function scrollWin() {
+  window.scrollTo(0, 10000);
+} 
+
+function scrollWindUp() {
+  location.reload();
+
+  window.scrollTo(0, 1);
+
+} 
+ 
 
 function eventToUserData(event) {
 
@@ -56,6 +74,7 @@ async function refreshTable(){
  const users = await getUserFromApi();
 drawUserTable(users);
 
+
 }
 
 async function getUserFromApi(){
@@ -69,6 +88,7 @@ async function drawUserTable(users){
      document.getElementById("userDataTableTBody").innerHTML = "";
     users.forEach((user)  => {
      addUserToTable(user);
+     
   });
 
 }
@@ -101,7 +121,10 @@ cell6.innerHTML = user.correo_estu;
 cell7.innerHTML = user.fecha_nac_estu; 
 cell8.innerHTML = user.ident_estu;
 cell9.innerHTML = user.direccion_estu;  
+
   }
+   
+
   
 document.addEventListener("DOMContentLoaded", () => { //Method para mostrar datos al cargar la página
   refreshTable(); 

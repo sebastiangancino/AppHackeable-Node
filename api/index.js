@@ -1,7 +1,7 @@
 
 const express = require("express");
 const cors = require("cors");
-const {Client} = require('pg')
+const {Client} = require('pg');
  
 
 const port = 3000;
@@ -56,6 +56,13 @@ app.listen(port, () => {
   }); 
 
   await client.connect();
+
+
+  try {
+    
+  } catch (error) {
+    
+  }
 
  const queryToInsert = 
  "INSERT INTO estudiante values ('"+
