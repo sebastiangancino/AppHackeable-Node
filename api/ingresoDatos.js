@@ -17,11 +17,18 @@ form.addEventListener("submit", (event) => {
   });
 });
 
+/* function captureSelect() {
+  cod_nac= document.getElementById("cod_nac").value;
+  console.log(cod_nac)
+}
+ */
+
 function eventToUserData(event) {
 
 const elements = event.target.elements;  
 const cod_estu = elements.cod_estu.value;
-const cod_nac = elements.cod_nac.value;
+/* const cod_nac = elements.cod_nac.value;
+ */const cod_nac= document.getElementById("cod_nac").value;
 const apellido_estu = elements.apellido_estu.value;
 const nombre_estu = elements.nombre_estu.value;
 const telefono_estu = elements.telefono_estu.value;
