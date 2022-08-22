@@ -83,6 +83,7 @@ app.listen(port, () => {
  const res = await client.query(queryToInsert);
   console.log(res.rows);
   await client.end();
+
 }
 
 async function getUserInDataBase() {
