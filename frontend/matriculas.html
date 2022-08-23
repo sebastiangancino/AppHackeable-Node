@@ -5,19 +5,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=+, initial-scale=1.0" />
-    <script src="main.js"></script>
-    <script
-      src="https://kit.fontawesome.com/3d7523478c.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="matriculas.css" />
     <title>Estudiantes</title>
   </head>
   <body>
     <div class="main">
       <div class="container-logo">
-        <a href="">
+        <a href="index.html">
         <img src="../assets/img/logouce.png" alt="" />
     </a>
              </div>
@@ -44,6 +40,8 @@
 
       <div class="page-container">
         <div class="createUserContainer">
+
+            <h1>Complete el formulario para matricularse</h1>
           <form action="" id="createUserForm">
             <div>
 
@@ -51,26 +49,71 @@
                 <img src="..//assets/img/programmer.png" alt="Avatar" class="avatar">
               </div> 
 
-              <label for="name">Nombre</label>
-              <input type="text" id="name" />
+              <div>
+                
+               <div class="label-container"><label for="cod_estu">CÓDIGO</label></div>
+                <input type="text" id="cod_estu"  placeholder="Nickname"/>
+              </div>
+
+             <!--  <div>
+                <label for="cod_nac">Nacionalidad</label>
+                <input type="text" id="cod_nac" />
+              </div> -->
+               <div class="label-container"><label for="cod_nac">NACIONALIDAD:  </label></div>
+              <select id="cod_nac"   >
+               
+                <option value="EC001">Ecuatoriana</option>
+                <option value="CO002">Colombiana</option>
+                <option value="VE003">Venezolana</option>
+                <option value="ES004">Española</option>
+                <option value="PE005">Peruana</option>
+          
+              </select> 
+            
+            
+              <div>
+              <div class="label-container"> <label for="apellido_estu">APELLIDOS:</label></div>
+              <input type="text" id="apellido_estu"  placeholder="Apellidos"/>
+            </div>
+
+
+              <div> 
+             <div class="label-container"> <label for="nombre_estu">NOMBRES:</label></div>
+              <input type="text" id="nombre_estu"  placeholder="Nombres"/>
+            </div>
+
+
+            <div> 
+              <div class="label-container"><label for="telefono_estu">TELÉFONO:</label></div> 
+              <input type="text" id="telefono_estu" placeholder="09xxxxxxxx" />
+            </div>
+          
+            <div> 
+             <div class="label-container"> <label for="correo_estu">CORREO:</label></div>
+              <input type="text" id="correo_estu"  placeholder="example@uce.edu.ec"/>
             </div>
   
-            <div>
-              <label for="surname">Apellido</label>
-              <input type="text" id="surname" />
+
+            <div> 
+            <div class="label-container">  <label for="fecha_nac_estu">FECHA DE NACIMIENTO:</label></div>
+              <input type="text" id="fecha_nac_estu" placeholder="Example: 1997-07-20" />
             </div>
-  
+
+
             <div>
-              <label for="age">Edad</label>
-              <input type="text" id="age" />
+              <div class="laber-container"> <label for="ident_estu">CÉDULA: </label></div>
+              <input type="text" id="ident_estu"  placeholder="172499xxxx"/>
             </div>
-  
+
             <div>
-              <label for="password">Password</label>
-              <input type="password" id="password" />
+             <div class="label-container"> <label for="direccion_estu">DIRECCIÓN:</label></div>
+              <input type="text" id="direccion_estu"  placeholder="Dirección"/>
             </div>
             <div class="buttom-container">
-              <button type="submit">Crear ususario</button>
+
+              <button type="submit" onclick="scrollWin()" >Crear usuario</button>
+
+
             </div>
            </form>
         </div>
@@ -84,10 +127,15 @@
           <table id="userDataTable">
             <thead>
               <tr>
-                <th>Nombres</th>
+                <th>Código</th>
+                <th>Nacionalidad</th>
                 <th>Apellidos</th>
-                <th>Edad</th>
-                <th>Contraseña</th>
+                <th>Nombres</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Fecha nacimiento</th>
+                <th>Identificación</th>
+                <th>Dirección</th>
               </tr>
             </thead>
   
@@ -95,6 +143,13 @@
               
             </tbody>
           </table>
+
+          <div class="buttom-container">
+
+            <button  onclick="scrollWindUp()" >Subir</button>
+
+
+          </div>
         </div>
     
 
@@ -108,10 +163,10 @@
       
     </div>
 
+  
+<script src="../api/ingresoDatos.js"></script>  
 
-    <script src="../api/ingresoDatos.js"></script>
-  </body>
+
+</body>
 </html>
-    </div>
-  </body>
-</html>
+

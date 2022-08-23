@@ -10,7 +10,7 @@ background: linear-gradient(120deg, rgba(2,0,36,1) 38%, rgba(8,96,168,1) 63%);
     width: 100%;
     /* background: linear-gradient(to top, rgba(0 0 0 0.5) 50%, rgba(0 0 0 0.5) 50%, url(../assets/bannerimg.jpg));
       */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 60)),
+    background: linear-gradient(to top, rgba(0, 0, 0, .8), rgba(0, 0, 60)),
       url(../assets/img/background.jpg);
     background-position: center;
     background-size: cover;
@@ -25,19 +25,19 @@ margin-top: 10px;
 
 
 tr > * {
-    padding: 3rem;
+    padding: .2rem;
     border: 0.1px solid #fff3;
     text-align: center;
     color: wheat;
     /* background: rgb(3, 9, 30); */
     border-radius: 1rem;
+    font-size: .9rem;
     }
 
 
     th {
         background: rgba(8, 96, 168, 1);
         /* border-radius: 1.4rem; */
-        padding: 2rem;
     }
     buttom-container {
     text-align: center;
@@ -103,3 +103,17 @@ tr > * {
   padding-right: 3rem;
 }
  
+
+/*titulo */
+.container-titulo-estudiantes {
+font-size: 3rem;
+color: aliceblue;
+display: flex;
+text-align: center;
+align-items: center;
+}
+
+
+.students-img img {
+  width: 180px;
+}

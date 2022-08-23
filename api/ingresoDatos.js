@@ -16,10 +16,12 @@ form.addEventListener("submit", (event) => {
     body: userDataJson,
   }).then((result)=> {
     refreshTable();
-   
+    scrollWin() ;
     
     
   });
+
+ 
 });
 
  
@@ -35,7 +37,6 @@ function scrollWin() {
 
 function scrollWindUp() {
   location.reload();
-
   window.scrollTo(0, 1);
 
 } 
@@ -83,6 +84,12 @@ async function getUserFromApi(){
   return users;
 }
 
+/* async function getDocenteFromApi(){
+  const response = await fetch("http://localhost:3000/docente")
+  const docente = await response.json();
+  return docente;
+} */
+
 
 async function drawUserTable(users){
      document.getElementById("userDataTableTBody").innerHTML = "";
@@ -121,6 +128,8 @@ cell6.innerHTML = user.correo_estu;
 cell7.innerHTML = user.fecha_nac_estu; 
 cell8.innerHTML = user.ident_estu;
 cell9.innerHTML = user.direccion_estu;  
+
+
 
   }
    

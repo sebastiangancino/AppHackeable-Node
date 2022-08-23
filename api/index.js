@@ -38,6 +38,14 @@ app.post("/users", (req, res) => {
     res.send(users);
   })
 
+  
+
+
+ app.get("/docentes", async (req, res)=> {
+    const docentes = await getDocentesInDataBase();
+    res.send(docentes);
+  }) 
+
 app.listen(port, () => {
   console.log(`Example app listening at http:/localhost:${port}`);
 });
@@ -58,12 +66,7 @@ app.listen(port, () => {
   await client.connect();
 
 
-  try {
-    
-  } catch (error) {
-    
-  }
-
+  
  const queryToInsert = 
  "INSERT INTO estudiante values ('"+
  cod_estu +
@@ -113,3 +116,27 @@ async function getUserInDataBase() {
   await client.end();
   return res.rows;
 }
+
+ async function getDocentesInDataBase() {
+  //Guarda en la Base de datos
+  const client = new Client({
+    user: 'yiqyaovtxyqnfj',
+    host: 'ec2-44-209-186-51.compute-1.amazonaws.com',
+    database: 'd7bfbe8kpjru51',
+    password: '5c295666fdeff0d1b148b9124337d28496d4d144e38b8726e1e51f17ebabbc83',
+    port: 5432,
+    ssl:{
+      rejectUnauthorized:false,
+    },
+  }); 
+
+  await client.connect();
+
+
+  const res = await client.query("Select * from docente");
+  console.log(res.rows);
+  await client.end();
+  return res.rows;
+} 
+
+
