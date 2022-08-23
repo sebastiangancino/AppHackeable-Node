@@ -46,6 +46,11 @@ app.post("/users", (req, res) => {
     res.send(docentes);
   }) 
 
+  app.get("/materias", async (req, res)=> {
+    const materias = await getMateriasInDataBase();
+    res.send(materias);
+  }) 
+
 app.listen(port, () => {
   console.log(`Example app listening at http:/localhost:${port}`);
 });
@@ -94,6 +99,7 @@ app.listen(port, () => {
   console.log(res.rows);
   await client.end();
 
+  
 }
 
 async function getUserInDataBase() {
@@ -111,10 +117,14 @@ async function getUserInDataBase() {
 
   await client.connect();
  
- const res = await client.query("Select * from estudiante");
+
+ 
+    const res = await client.query("SELECT * FROM estudiante ORDER BY apellido_estu ASC ");
   console.log(res.rows);
   await client.end();
   return res.rows;
+ 
+
 }
 
  async function getDocentesInDataBase() {
@@ -139,4 +149,24 @@ async function getUserInDataBase() {
   return res.rows;
 } 
 
+async function getMateriasInDataBase() {
+  //Guarda en la Base de datos
+  const client = new Client({
+    user: 'yiqyaovtxyqnfj',
+    host: 'ec2-44-209-186-51.compute-1.amazonaws.com',
+    database: 'd7bfbe8kpjru51',
+    password: '5c295666fdeff0d1b148b9124337d28496d4d144e38b8726e1e51f17ebabbc83',
+    port: 5432,
+    ssl:{
+      rejectUnauthorized:false,
+    },
+  }); 
 
+  await client.connect();
+
+
+  const res = await client.query("Select * from materia ORDER BY cod_mat ASC  ");
+  console.log(res.rows);
+  await client.end();
+  return res.rows;
+} 

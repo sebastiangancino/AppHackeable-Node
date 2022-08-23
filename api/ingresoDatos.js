@@ -1,4 +1,5 @@
 
+
 const form = document.getElementById("createUserForm");//constante form del formulario
 form.addEventListener("submit", (event) => {
 
@@ -15,32 +16,26 @@ form.addEventListener("submit", (event) => {
     },
     body: userDataJson,
   }).then((result)=> {
+    
     refreshTable();
-    scrollWin() ;
-    
-    
+  
   });
-
  
 });
 
- 
-/* function captureSelect() {
-  cod_nac= document.getElementById("cod_nac").value;
-  console.log(cod_nac)
-}
- */
- 
-function scrollWin() {
-  window.scrollTo(0, 10000);
-} 
 
 function scrollWindUp() {
-  location.reload();
   window.scrollTo(0, 1);
-
-} 
+}
+  
+/*
+function scrollWin() {
+  window.scrollTo(0, 10000);
+}
+  */
  
+
+
 
 function eventToUserData(event) {
 
@@ -78,25 +73,31 @@ drawUserTable(users);
 
 }
 
+
+
+
 async function getUserFromApi(){
   const response = await fetch("http://localhost:3000/users")
   const users = await response.json();
   return users;
 }
 
-/* async function getDocenteFromApi(){
-  const response = await fetch("http://localhost:3000/docente")
-  const docente = await response.json();
-  return docente;
-} */
+
 
 
 async function drawUserTable(users){
-     document.getElementById("userDataTableTBody").innerHTML = "";
+
+  document.getElementById("userDataTableTBody").innerHTML = "";
     users.forEach((user)  => {
      addUserToTable(user);
-     
+      
   });
+ 
+ 
+
+ 
+    
+  
 
 }
 
@@ -140,3 +141,4 @@ document.addEventListener("DOMContentLoaded", () => { //Method para mostrar dato
 
  }); 
 
+ 
